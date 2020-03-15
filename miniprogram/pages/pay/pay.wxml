@@ -1,0 +1,15 @@
+<view class="contaner">
+  <view class="info">
+    <icon type="success" size="80" color="green"/>
+    <text> 支付成功！</text>
+  </view>
+  <view class="info img">
+    <view class='btn-block' bindtap='gohome'>
+      <view class="btn_op1">返回首页</view>
+    </view>
+    <view class='btn-block' bindtap='check'>
+      <view class="btn_op2">查看订单</view>
+    </view>
+ 
+  </view>
+</view>

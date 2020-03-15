@@ -1,0 +1,17 @@
+<!--pages/alter/alter.wxml-->
+<view wx:if="{{shopid==undefined}}">
+这是菜单修改页面
+原名：{{orginalmenu}}
+新名:<input bindinput="newmenuname" value=""></input>
+<button bindtap="updatemenu">确认更改</button>
+</view>
+<view wx:if="{{shopid!=undefined}}">
+这是菜品修改页面{{menuid}}shopid{{shopid}}
+
+菜名：<input bindinput="newfoodname" value="{{newfood.title}}"></input>
+价格：<input bindinput="newfoodprice" value="{{newfood.price}}"></input>
+图片: <view class='pulishBtn' bindtap='doUpload' >上传</view>
+
+<image src="{{newfood.imgsrc}}"></image>
+<button bindtap="updatefood">确认更改</button>
+</view>

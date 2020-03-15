@@ -1,0 +1,14 @@
+<!--pages/add/add.wxml-->
+<view wx:if="{{shopid==undefined}}">
+这是菜单增加页面
+菜单名:<input bindinput="newmenuname" value=""></input>
+<button bindtap="addmenu">确认增加</button>
+</view>
+<view wx:if="{{shopid!=undefined}}">
+这是菜品增加页面
+菜名：<input bindinput="newfoodname" value="{{newfood.title}}"></input>
+价格：<input bindinput="newfoodprice" value="{{newfood.price}}"></input>
+图片: <view class='pulishBtn' bindtap='doUpload' >上传</view>
+<image src="{{newfood.imgsrc}}"></image>
+<button bindtap="addfood">确认增加</button>
+</view>

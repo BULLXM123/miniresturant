@@ -1,0 +1,46 @@
+.info{
+  position:relative;
+  top:50%;
+  margin:100px auto 0;
+}
+.info icon{
+  display: block;
+  text-align:center;
+}
+.info text{
+  display:block;
+  margin-top:20px;
+  font-size:25px;
+  color:green;
+  font-weight:bolder;
+  text-align:center;
+} 
+.info.img{
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-block{
+  width: 35%;
+  display: flex;
+  justify-content:center;
+}
+.btn_op1{
+  text-align: center;
+  font-size:14px;
+  color:#FF9C35;
+  padding: 5px 20px;
+  border:1px solid #FF9C35;
+  border-radius: 25px;
+  width: 100px;
+  z-index: 10;
+}
+.btn_op2{
+  text-align: center;
+  font-size:14px;
+  color:#B6D9A9;
+  padding: 5px 20px;
+  border:1px solid #B6D9A9;
+  border-radius: 25px;
+  width: 100px;
+}

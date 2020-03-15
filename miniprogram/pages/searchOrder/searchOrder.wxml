@@ -1,0 +1,108 @@
+<!--pages/searchOrder/searchOrder.wxml-->
+<view wx:if="{{allOrder.length==0}}">
+   <view class='go-center' style="margin-top:100px">
+      <i class="iconfont icon-dingdan dindgan-i" ></i>
+   </view>
+   <view class='go-center note-btn'>目前没有即时订单</view>
+   <view class='go-center' style='margin-top:20px' >
+     <view class='go-center down-center start-btn' bindtap='golist'>开始点餐</view>
+   </view>
+</view>
+<view wx:if="{{allOrder.length>0}}">
+<!-- 切换栏 -->
+<view class="swiper-tab">
+<block wx:for="{{swipertab}}" wx:key="sptab">
+<view class="swiper-tab-list {{currtab == item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="tabSwitch">{{item.name}}</view>
+</block>
+</view>
+<swiper current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-31}}px" bindchange="tabChange">
+<!-- 完成 -->
+<swiper-item>
+<scroll-view class="hot-box" scroll-y>
+<view class="orderDetails" wx:for="{{allOrder}}" wx:key="item.time" bindtap="jumptoDetail" data-timestamp="{{item.time}}" data-pay="{{item.pay}}">
+<view class="orderListTitle">
+<text class="userName" wx:if="{{item.data.length<2}}">{{item.data[0].title}}</text>
+<text class="userName" wx:if="{{item.data.length>1}}">{{item.data[0].title}}等{{item.data.length}}件菜品</text>
+<text class="orderStatus" wx:if="{{item.pay==0}}">代付款</text>
+<text class="orderStatus" wx:if="{{item.pay==1}}">交易成功</text>
+</view>
+<view class="orderListDetails">
+<view class="productImg">
+<image src="{{item.data[0].imgsrc}}" background-size="cover"></image>
+</view>
+<view class="productInfo">
+<view class="productTitle">操作时间: {{item.timeString}}</view>
+<text class="productPrice" wx:if="{{item.pay==0}}">当前状态：代付款</text>
+<text class="productPrice" wx:if="{{item.pay==1}}">当前状态：交易成功</text>
+
+</view>
+</view>
+<view class="productCount">
+<view>
+<text>合计：￥{{item.money}}</text>
+</view>
+</view>
+</view>
+</scroll-view>
+</swiper-item>
+<!-- 待付款 -->
+<swiper-item>
+<scroll-view class="hot-box" scroll-y="true">
+<view class="orderDetails" wx:for="{{paiedOrder}}" wx:key="item.time" bindtap="jumptoDetail" data-timestamp="{{item.time}}" data-pay="{{item.pay}}">
+<view class="orderListTitle">
+<text class="userName" wx:if="{{item.data.length<2}}">{{item.data[0].title}}</text>
+<text class="userName" wx:if="{{item.data.length>1}}">{{item.data[0].title}}等{{item.data.length}}件菜品</text>
+<text class="orderStatus" wx:if="{{item.pay==0}}">代付款</text>
+<text class="orderStatus" wx:if="{{item.pay==1}}">交易成功</text>
+</view>
+<view class="orderListDetails">
+<view class="productImg">
+<image src="{{item.data[0].imgsrc}}" background-size="cover"></image>
+</view>
+<view class="productInfo">
+<view class="productTitle">操作时间: {{item.timeString}}</view>
+<text class="productPrice" wx:if="{{item.pay==0}}">当前状态：代付款</text>
+<text class="productPrice" wx:if="{{item.pay==1}}">当前状态：交易成功</text>
+
+</view>
+</view>
+<view class="productCount">
+<view>
+<text>合计：￥{{item.money}}</text>
+</view>
+</view>
+</view>
+</scroll-view>
+</swiper-item>
+<!-- 取消 -->
+<swiper-item>
+<scroll-view class="hot-box" scroll-y="true">
+<view class="orderDetails" wx:for="{{waitPayOrder}}" wx:key="item.time" bindtap="jumptoDetail" data-timestamp="{{item.time}}" data-pay="{{item.pay}}">
+<view class="orderListTitle">
+<text class="userName" wx:if="{{item.data.length<2}}">{{item.data[0].title}}</text>
+<text class="userName" wx:if="{{item.data.length>1}}">{{item.data[0].title}}等{{item.data.length}}件菜品</text>
+<text class="orderStatus" wx:if="{{item.pay==0}}">代付款</text>
+<text class="orderStatus" wx:if="{{item.pay==1}}">交易成功</text>
+</view>
+<view class="orderListDetails">
+<view class="productImg">
+<image src="{{item.data[0].imgsrc}}" background-size="cover"></image>
+</view>
+<view class="productInfo">
+<view class="productTitle">操作时间: {{item.timeString}}</view>
+<text class="productPrice" wx:if="{{item.pay==0}}">当前状态：代付款</text>
+<text class="productPrice" wx:if="{{item.pay==1}}">当前状态：交易成功</text>
+
+</view>
+</view>
+<view class="productCount">
+<view>
+<text>合计：￥{{item.money}}</text>
+</view>
+</view>
+</view>
+</scroll-view>
+</swiper-item>
+ 
+</swiper>
+</view>

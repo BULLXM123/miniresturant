@@ -1,0 +1,59 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="aside">
+    <view class="{{tabIndex === index ? 'menu active' : 'menu'}}" wx:for="{{menus}}" wx:key="id"data-index="{{index}}" bindtap='tabMenu'>{{item.menuname}}
+    <view class="selected"></view>
+    </view>
+  </view>
+  <view class="item-content">
+    <view class="{{orderCount.num === 0 ? 'box' : 'box active'}}">
+      <view class="item" wx:for="{{items}}" wx:key="id">
+        <image src='{{item.imgsrc}}'></image>
+        <text class="title">{{item.title}}</text>
+        <text class="price">￥ {{item.price}} 元</text>
+        <view class="opera">
+        
+          <text class="btn {{bottomFlag ? 'soso' : 'hidden'}}" bindtap="del" data-id="{{item.id}}" data-index="{{index}}">-</text>
+          <text class="num {{showNum ? 'show' : 'hidden'}}">{{item.num}}</text>
+          <text class="btn" bindtap="add" data-id="{{item.id}}" data-index="{{index}}" >+</text>
+         
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class=" {{bottomFlag ? 'bottom-bar' : 'bottom-bar hidden'}}" >
+    <view class="count shareTips shareButtonBox" bindtap="showModal">
+        共 <text class="num">{{orderCount.num}} 件</text>     
+        合计 <text class="num">{{orderCount.money}} 元</text> 
+    </view>
+    <view class="btn">
+        <text bindtap='card'>选好了</text>
+    </view>
+  </view>
+  <view class="modals modals-bottom-dialog" style="top:{{thetop}}">
+  <!-- <view class="modal_body"> -->
+  <view class="modals-cancel" bindtap="hideModal"></view>
+    <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+        <view class="borderCl">
+            <view class="turnoff" bind:tap="hideModal">返回</view>
+             <text>购物车</text>
+            <view class="clear" bind:tap="clear">清空</view>
+        </view>
+       
+     <scroll-view scroll-y="true" class="details scroll-list">
+      <view class='cart-list-box' wx:for="{{userorders}}" style='border-bottom:1px #E3E3E3 solid'>
+        <view class='list-info'>{{item.title}} * {{item.num}}</view>
+      <view class="list-btn">
+          <text class="btn {{bottomFlag ? 'soso' : 'hidden'}}" bindtap="del2" data-shopid="{{item.shopid}}">-</text>
+           <label class='num'>¥ {{item.num * item.price}}</label>
+          <text class="btn" bindtap="add2" data-shopid="{{item.shopid}}">+</text>
+      </view>
+    </view>
+     </scroll-view>
+        
+       
+    </view>
+  </view>
+    
+<!-- </view> -->
+</view>
